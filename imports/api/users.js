@@ -3,10 +3,8 @@ import SimpleSchema from 'simpl-schema';
 import { Accounts } from 'meteor/accounts-base';
 
 
-
-Accounts.validateNewUser((user)=>{
+export const validateNewUser = (user) => {
   const email = user.emails[0].address;
-
 
   new SimpleSchema({
       email: {
@@ -16,4 +14,8 @@ Accounts.validateNewUser((user)=>{
   }).validate({ email });
 
   return true;
-});
+};
+
+if(Meteor.isServer){
+  Accounts.validateNewUser(validateNewUser);
+}
