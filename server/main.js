@@ -4,6 +4,9 @@ import { WebApp } from 'meteor/webapp';
 import '../imports/api/users'; // executes directly
 import '../imports/startup/simple-schema-configuration';
 
+import '../imports/api/notes'; // executes directly
+
+
 Meteor.startup(() => {
 
 
