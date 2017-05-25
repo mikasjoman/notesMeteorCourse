@@ -10,6 +10,7 @@ import { createContainer } from 'meteor/react-meteor-data';
       <h5>
         {title || 'Untitled note'}
       </h5>
+      { props.note.selected ? 'selected' : undefined }
       <p>
         { moment(updatedAt).format('YYYY-MM-DD') }
       </p>
