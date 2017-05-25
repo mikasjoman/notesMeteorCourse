@@ -65,7 +65,7 @@ export class Editor extends Component {
     if(this.props.note){
       return this.renderEditor();
     }else {
-      return <p>{this.props.selectedNoteId ? 'Note note found': 'Pick or create a note to get started'} </p>;
+      return <p>{this.props.selectedNoteId ? 'Note note found': 'Pick or create a note to get started'}</p>;
     }
   }
 }
