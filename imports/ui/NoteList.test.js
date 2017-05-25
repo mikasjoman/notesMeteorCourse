@@ -5,23 +5,8 @@ import { Meteor } from 'meteor/meteor';
 
 import { NoteList } from './NoteList';
 
+import { notes } from '../fixtures/fixtures';
 
-const notes = [
-  {
-    _id: 'noteId1',
-    title: 'test title',
-    body: '',
-    updatedAt: 0,
-    userId: 'userId1'
-  },
-  {
-    _id: 'noteId2',
-    title: 'test title',
-    body: 'something is here',
-    updatedAt: 0,
-    userId: 'userId1'
-  }
-];
 
 if(Meteor.isClient){
   describe('NotesList', function(){
