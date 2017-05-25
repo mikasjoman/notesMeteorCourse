@@ -3,18 +3,44 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { Session } from 'meteor/session';
 import { Meteor } from 'meteor/meteor';
 import { Notes } from '../api/notes';
+import { browserHistory } from 'react-router';
 
 export class Editor extends Component {
 
-  handleBodyChange(event) {
-    this.props.call('notes.update', this.props.note._id, {
-      body: event.target.value
-    })
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: '',
+      body: ''
+    }
   }
+
+  handleBodyChange(event) {
+    const body = event.target.value;
+    this.setState({ body })
+    this.props.call('notes.update', this.props.note._id, { body });
+  }
+
   handleTitleChange(event) {
-    this.props.call('notes.update', this.props.note._id, {
-      title: event.target.value
-    })
+    const title = event.target.value;
+    this.setState({ title });
+    this.props.call('notes.update', this.props.note._id, { title });
+  }
+
+  handleRemoveNote() {
+    const { call, browserHistory } = this.props;
+    call('notes.remove', this.props.note._id);
+    browserHistory.push('dashboard');
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const currentNoteId = this.props.note ? this.props.note._id : undefined;
+    const prevNoteId = prevProps.note ? prevProps.note._id : undefined;
+
+    if (currentNoteId && currentNoteId !== prevNoteId) {
+      const { title, body } = this.props.note;
+      this.setState({ title, body });
+    }
   }
 
   renderEditor() {
@@ -22,15 +48,15 @@ export class Editor extends Component {
     return (
       <div>
         <input
-          value={title}
+          value={this.state.title}
           onChange={this.handleTitleChange.bind(this)}
           placeholder="Untitled note title"
         />
         <textarea
-          value={body}
+          value={this.state.body}
           onChange={this.handleBodyChange.bind(this)}
           placeholder="Your note here..."></textarea>
-        <button>Delete note</button>
+        <button onClick={this.handleRemoveNote.bind(this)}>Delete note</button>
       </div>
     )
   }
@@ -45,6 +71,8 @@ export class Editor extends Component {
 }
 
 Editor.propTypes = {
+  call: React.PropTypes.func.isRequired,
+  browserHistory: React.PropTypes.object.isRequired,
   note: React.PropTypes.object,
   selectedNoteId: React.PropTypes.string
 };
@@ -54,7 +82,8 @@ export default createContainer(() => {
   return {
     selectedNoteId,
     note: Notes.findOne(selectedNoteId),
-    call: Meteor.call
+    call: Meteor.call,
+    browserHistory
   };
 
 }, Editor);
