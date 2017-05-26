@@ -5,20 +5,48 @@
   width: 100%;
   overflow-y: scroll;
 }
-.item {
-  background: $item-bg;
-  border: 1px solid $item-border;
-  margin-bottom: $space;
+
+.item-list__header {
+  display: flex;
+  flex-direction: column;
   padding: $space;
 }
 
-.item__message {
-  color: $item-text-color;
+.item {
+  cursor: pointer;
+  padding: $space;
+  border-left: $item-border-width solid transparent;
+  transition: background-color 0.5s ease, border-left 1s ease;
 }
 
-.item__status-message {
-  color: $item-text-color;
-  font-style: italic;
-  text-align: center;
+.item:hover {
+  background-color: $light-grey;
+  border-left: $item-border-width solid $grey;
+}
+
+.item--selected, .item--selected:hover {
+  background-color: $light-grey;
+  border-left: $item-border-width solid $brand-primary;
+}
+
+.item__title{
+  font-weight: normal;
+  font-size: $base-font-size;
+  margin-bottom: 0.4rem;
+}
+
+.item--selected .item__title {
+  font-weight: bold;
+}
+
+.item__subtitle {
+  color:$grey;
   margin: 0;
+}
+// emtpy item
+
+.empty-item {
+  font-style: italic;
+  padding: $space;
+  text-align: center;
 }
