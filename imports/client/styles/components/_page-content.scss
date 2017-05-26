@@ -1,18 +1,33 @@
+// SCSS mixins
+
+// observe each scss class is mobile first, and then get adapted to desktop size
+
 .page-content {
   display: flex;
   margin: 0 auto;
   max-width: $site-max-width;
-  padding: $large-space $space;
   height: $page-content-height;
+
+  @include desktop {
+    padding: $large-space $space;
+  }
 }
 
 .page-content__sidebar {
-  display: flex;
+  display: none;
   width: $page-content-sidebar-width;
   padding-right: $large-space;
+
+  @include desktop () {
+    display: flex;
+  }
 }
 
 .page-content__main {
- width: $page-content-main-width;
  display: flex;
+ width: 100%;
+
+ @include desktop {
+   width: $page-content-main-width;
+ }
 }

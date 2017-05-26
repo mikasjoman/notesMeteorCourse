@@ -2,6 +2,7 @@
 @import './variables';
 @import './base';
 
+@import './mixins/media-query-mixins.scss';
 
 @import './components/button';
 @import './components/boxed-view';
