@@ -9,7 +9,7 @@ import NoteList from './NoteList';
 export default () => {
   return (
     <div>
-      <PrivateHeader title="Dashboard" />
+      <PrivateHeader title="Notes" />
       <PageContent>
         <div className="page-content__sidebar">
           <NoteList />
