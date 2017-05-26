@@ -20,7 +20,7 @@ const renderNotes = (notes) => {
 
 export const NoteList = (props) => {
   return (
-    <div>
+    <div className="item-list">
       <NoteListHeader />
       { renderNotes(props.notes) }
       NoteList

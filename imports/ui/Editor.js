@@ -46,7 +46,7 @@ export class Editor extends Component {
   renderEditor() {
     const { body, title } = this.props.note;
     return (
-      <div>
+      <div className="editor">
         <input
           value={this.state.title}
           onChange={this.handleTitleChange.bind(this)}
@@ -65,7 +65,7 @@ export class Editor extends Component {
     if(this.props.note){
       return this.renderEditor();
     }else {
-      return <p>{this.props.selectedNoteId ? 'Note note found': 'Pick or create a note to get started'}</p>;
+      return <div className="editor"><p>{this.props.selectedNoteId ? 'Note note found': 'Pick or create a note to get started'}</p></div>;
     }
   }
 }

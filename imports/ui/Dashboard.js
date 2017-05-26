@@ -11,8 +11,12 @@ export default () => {
     <div>
       <PrivateHeader title="Dashboard" />
       <PageContent>
+        <div className="page-content__sidebar">
           <NoteList />
+        </div>
+        <div className="page-content__main">
           <Editor />
+        </div>
       </PageContent>
     </div>
   );
