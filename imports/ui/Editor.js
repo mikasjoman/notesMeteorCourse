@@ -48,15 +48,19 @@ export class Editor extends Component {
     return (
       <div className="editor">
         <input
+          className="editor__title"
           value={this.state.title}
           onChange={this.handleTitleChange.bind(this)}
           placeholder="Untitled note title"
         />
         <textarea
+          className="editor__body"
           value={this.state.body}
           onChange={this.handleBodyChange.bind(this)}
           placeholder="Your note here..."></textarea>
-        <button onClick={this.handleRemoveNote.bind(this)}>Delete note</button>
+        <div>
+          <button className="button button-secondary" onClick={this.handleRemoveNote.bind(this)}>Delete note</button>
+        </div>
       </div>
     )
   }
@@ -65,7 +69,7 @@ export class Editor extends Component {
     if(this.props.note){
       return this.renderEditor();
     }else {
-      return <div className="editor"><p>{this.props.selectedNoteId ? 'Note note found': 'Pick or create a note to get started'}</p></div>;
+      return <div className="editor editor__message"><p>{this.props.selectedNoteId ? 'Note note found': 'Pick or create a note to get started'}</p></div>;
     }
   }
 }
