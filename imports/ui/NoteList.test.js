@@ -18,7 +18,7 @@ if(Meteor.isClient){
     });
 
     it('should show NoteListEmptyItem if no notes provided', function(){
-      const empty = {};
+      const empty = [];
       const wrapper = mount(<NoteList notes={empty} />);
 
       expect(wrapper.find('NoteListItem').length).toBe(0);

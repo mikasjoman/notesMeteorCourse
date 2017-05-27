@@ -2,6 +2,7 @@ import React from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { Session } from 'meteor/session';
+import FlipMove from 'react-flip-move';
 
 import { Notes } from '../api/notes';
 
@@ -22,7 +23,9 @@ export const NoteList = (props) => {
   return (
     <div className="item-list">
       <NoteListHeader />
-      { renderNotes(props.notes) }
+      <FlipMove maintainContainerHeight={true}>
+        { renderNotes(props.notes) }
+      </FlipMove>
     </div>
   );
 };

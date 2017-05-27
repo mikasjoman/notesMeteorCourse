@@ -32,14 +32,14 @@ if (Meteor.isClient) {
     it('should remove a note when clicking remove btn', function(){
       const wrapper = mount(<Editor
           note={notes[0]}
-          selectedNoteId={[notes[0]._id]}
+          selectedNoteId={notes[0]._id}
           browserHistory={browserHistory}
           call={call}
         />);
       wrapper.find('button').simulate('click');
       expect(call).toHaveBeenCalled();
       expect(call).toHaveBeenCalledWith('notes.remove', notes[0]._id);
-      expect(browserHistory.push).toHaveBeenCalledWith('dashboard');
+      expect(browserHistory.push).toHaveBeenCalledWith('notes');
     });
 
     it('should update the note body on text area change', function(){

@@ -8,27 +8,35 @@ import { PrivateHeader } from './PrivateHeader';
 
 if(Meteor.isClient){
   describe('PrivateHeader', function(){
-      it('should set button text to logout', function(){
-        const wrapper = mount(<PrivateHeader title="test title" handleLogout={()=>{}} />);
+      beforeEach(() => {
+        Session = {
+          set: expect.createSpy()
+        };
+      });
 
+      it('should set button text to logout', function(){
+        const wrapper = mount(<PrivateHeader isSignedIn={true} handleNavToggle={()=>{}} isNavOpen={false} handleLogout={()=>{}} />);
+        wrapper.setProps({ isSignedIn: true});
         const buttonText = wrapper.find('button').text();
 
         expect(buttonText).toBe('Log out');
       });
 
-      it('should use title prop as h1 text', function(){
-        const title = 'Test title here';
-        const wrapper = mount(<PrivateHeader title={title}  handleLogout={()=>{}} />);
-        const titleText = wrapper.find('h1').text();
-
+      it('should show tab with title Notes', function(){
+        const title = 'Notes';
+        const wrapper = mount(<PrivateHeader isSignedIn={true} handleNavToggle={()=>{}} isNavOpen={false} handleLogout={()=>{}} />);
+        const titleText = wrapper.find('a').first().text();
         expect(titleText).toBe(title);
       });
 
+
       it('should call handleLogout on click', function(){
         const spy = expect.createSpy();
-        const wrapper = mount(<PrivateHeader title="t" handleLogout={spy}/>);
+        const wrapper = mount(<PrivateHeader isSignedIn={true} handleNavToggle={()=>{}} isNavOpen={false} handleLogout={spy}/>);
+        wrapper.setProps({ isSignedIn: true});
         wrapper.find('button').simulate('click');
         expect(spy).toHaveBeenCalled();
       });
+
   });
 }

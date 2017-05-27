@@ -30,7 +30,7 @@ export class Editor extends Component {
   handleRemoveNote() {
     const { call, browserHistory } = this.props;
     call('notes.remove', this.props.note._id);
-    browserHistory.push('dashboard');
+    browserHistory.push('notes');
   }
 
   componentDidUpdate(prevProps, prevState) {
