@@ -33,9 +33,9 @@ export class Login extends React.Component {
             <h1>SecondLang Studypal</h1>
             <h5>{error ? <p>{error}</p> : null}</h5>
             <form className="boxed-view__form" onSubmit={this.onSubmit.bind(this)}>
-              <input type="email" ref="email" name="email" placeholder="Email" />
-              <input type="password" ref="password" name="password" placeholder="Password" />
-              <button className="button" type="submit">Login to account</button>
+              <input id="emailInput" type="email" ref="email" name="email" placeholder="Email" />
+              <input id="passwordInput" type="password" ref="password" name="password" placeholder="Password" />
+              <button id="submitLoginBtn" className="button" type="submit">Login to account</button>
             </form>
             <Link to="/signup">Signup to a new account</Link>
           </div>
