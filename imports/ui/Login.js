@@ -30,7 +30,7 @@ export class Login extends React.Component {
     return(
         <div className="boxed-view">
           <div className="boxed-view__box">
-            <h1>SecondLang Studypal</h1>
+            <h1>Notes & Books app</h1>
             <h5>{error ? <p>{error}</p> : null}</h5>
             <form className="boxed-view__form" onSubmit={this.onSubmit.bind(this)}>
               <input id="emailInput" type="email" ref="email" name="email" placeholder="Email" />
