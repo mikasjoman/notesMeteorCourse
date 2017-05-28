@@ -7,8 +7,9 @@ import Signup from '../ui/Signup';
 import NotFound from '../ui/Components/NotFound';
 import Login from '../ui/Login';
 import Dashboard from '../ui/Dashboard';
-import PageContent from '../ui/PageContent';
+import Notes from '../ui/Notes';
 import BooksDashboard from '../ui/books/BooksDashboard';
+
 
 const onEnterNotePage = (nextState) => {
   Session.set('selectedNoteId', nextState.params.id);
@@ -38,7 +39,6 @@ export const globalOnEnter = (nextState) => {
   Session.set('currentPagePrivacy', lastRoute.privacy)
 };
 
-
 export const routes = (
   <Router history={browserHistory}>
     <Route onEnter={globalOnEnter} onChange={globalOnChange} >
@@ -46,8 +46,8 @@ export const routes = (
         <Route path="/" component={Login} privacy="unauth" />
         <Route path="/signup" component={Signup} privacy="unauth" />
         <Route path="/books" component={BooksDashboard} privacy="auth"/>
-        <Route path="/notes" component={PageContent} privacy="auth" onLeave={onLeaveNotePage} onEnter={onEnterNotePage} />
-        <Route path="/notes/:id" component={PageContent} privacy="auth" onLeave={onLeaveNotePage} onEnter={onEnterNotePage} />
+        <Route path="/notes" component={Notes} privacy="auth" onLeave={onLeaveNotePage} onEnter={onEnterNotePage} />
+        <Route path="/notes/:id" component={Notes} privacy="auth" onLeave={onLeaveNotePage} onEnter={onEnterNotePage} />
       </Route>
       <Route path="*" component={NotFound} />
     </Route>

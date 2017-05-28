@@ -1,17 +1,16 @@
 import React from 'react';
-import NoteList from './NoteList';
-import Editor from './Editor';
 
-const PageContent = (props) =>{
+const TwoSidedLayout = (props) =>{
+
   return (
     <div className="page-content">
       <div className="page-content__sidebar">
-        <NoteList />
+        {props.sideBar}
       </div>
       <div className="page-content__main">
-        <Editor />
+        {props.mainContent}
       </div>
     </div>
   )
 }
-export default PageContent;
+export default TwoSidedLayout;

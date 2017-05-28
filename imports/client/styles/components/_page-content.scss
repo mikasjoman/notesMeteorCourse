@@ -14,6 +14,8 @@
 }
 
 .page-content__sidebar {
+  background-color: white;
+  border: 1px solid $grey;
   display:flex;
   transition: left 0.3s ease;
   width: 100vw;
@@ -28,7 +30,7 @@
     display: flex;
     width: $page-content-sidebar-width;
     position: static;
-    padding-right: $large-space;
+    margin-right: $large-space;
   }
 }
 
@@ -37,10 +39,12 @@
 }
 
 .page-content__main {
- display: flex;
- width: 100%;
+  background-color: white;
+  border: 1px solid $grey;
+  display: flex;
+  width: 100%;
 
- @include desktop {
-   width: $page-content-main-width;
- }
+  @include desktop {
+    width: $page-content-main-width;
+  }
 }

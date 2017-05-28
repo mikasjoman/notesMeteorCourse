@@ -4,10 +4,8 @@ import { Link } from 'react-router';
 import { Session } from 'meteor/session';
 
 const setSelectedTab = (url) => {
-  console.log('running session set');
   Session.set('selectedTab', url);
 }
-
 
 const renderTabs = (props) => {
   // URL_LIST { url: string, title: String, }
