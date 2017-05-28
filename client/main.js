@@ -31,6 +31,6 @@ Tracker.autorun(() => {
 Meteor.startup(() => {
   Session.set('selectedNoteId', undefined);
   Session.set('isNavOpen', false);
-  Session.set('selectedPage', 'notes');
+  Session.set('selectedTab', '/notes');
   ReactDOM.render(routes, document.getElementById('app'));
 });
