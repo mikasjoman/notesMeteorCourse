@@ -1,0 +1,13 @@
+.form {
+
+}
+
+.form__input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid $grey;
+  font-size: $base-font-size;
+  margin-bottom: $space;
+  outline: none;
+  padding: $input-spacing;
+}

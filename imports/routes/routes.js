@@ -8,7 +8,7 @@ import NotFound from '../ui/Components/NotFound';
 import Login from '../ui/Login';
 import Dashboard from '../ui/Dashboard';
 import Notes from '../ui/Notes';
-import BooksDashboard from '../ui/books/BooksDashboard';
+import Books from '../ui/books/Books';
 
 
 const onEnterNotePage = (nextState) => {
@@ -45,7 +45,7 @@ export const routes = (
       <Route component={Dashboard}>
         <Route path="/" component={Login} privacy="unauth" />
         <Route path="/signup" component={Signup} privacy="unauth" />
-        <Route path="/books" component={BooksDashboard} privacy="auth"/>
+        <Route path="/books" component={Books} privacy="auth"/>
         <Route path="/notes" component={Notes} privacy="auth" onLeave={onLeaveNotePage} onEnter={onEnterNotePage} />
         <Route path="/notes/:id" component={Notes} privacy="auth" onLeave={onLeaveNotePage} onEnter={onEnterNotePage} />
       </Route>

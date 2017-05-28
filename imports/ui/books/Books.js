@@ -3,10 +3,15 @@ import React from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import TwoSidedLayout from '../Components/TwoSidedLayout';
 
+import BookList from './BookList';
+import AddBook from './AddBook';
 
 const renderSidebar = () => {
   return (
-    <div>left</div>
+    <div>
+      <AddBook />
+      <BookList />
+    </div>
   )
 }
 

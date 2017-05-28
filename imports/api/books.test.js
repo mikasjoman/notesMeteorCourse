@@ -8,14 +8,16 @@ if(Meteor.isServer){
     const bookOne = {
       _id: 'book1',
       title: 'Med 1',
-      chapters: [],
+      no_chapters: 11,
+      no_pages: 1,
       userId: 'mika22'
     };
 
     var bookTwo = {
       _id: 'book2',
       title: 'Med 2',
-      chapters: [],
+      no_chapters: 0,
+      no_pages: 22,
       userId: 'mika33'
     };
 

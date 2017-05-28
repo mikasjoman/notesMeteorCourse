@@ -45,8 +45,12 @@ const validateNewBook = (book) => {
       type: String,
       min: 2
     },
-    chapters: {
-      type: Array,
+    no_chapters: {
+      type: Number,
+      optional: true
+    },
+    no_pages: {
+      type: Number,
       optional: true
     },
     userId: {
@@ -66,8 +70,8 @@ const validateUpdateBook = (_id, updates) => {
       min: 1,
       optional: true
     },
-    chapters: {
-      type: Array,
+    no_chapters: {
+      type: Number,
       optional: true
     }
   }).validate({_id, ...updates});
