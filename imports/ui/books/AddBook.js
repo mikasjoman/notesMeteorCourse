@@ -12,21 +12,24 @@ export class AddBook extends Component {
     super(props);
     this.state = {
       showForm: false,
-      title: ''
+      title: '',
+      error: ''
     };
   }
 
   saveBook() {
     const { title, no_chapters, no_pages } = this.state;
     let book = { title, no_chapters: parseInt(no_chapters), no_pages: parseInt(no_pages) };
-    console.log('the book');
+    console.log('the book is...');
     console.log(book);
+    this.props.meteorCall('books.insert', book, (error, resp) => {
 
-    this.props.meteorCall('books.insert',book, (err, resp) => {
-      console.log(resp);
-      if(err){
-//        props.Session.set('selectedNoteId', resp);
-        console.log(err);
+      if(error){
+        console.log('Could not save the book', error);
+        this.setState({ error });
+      }else{
+        console.log('Successfully saved the book');
+        this.setState({ showForm: false, error: '' });
       }
     });
   }
@@ -47,14 +50,19 @@ export class AddBook extends Component {
       );
   }
   handleFormChange(event) {
-    const value = event.target.value;
+    let value = event.target.value;
     const name = event.target.name;
+    const numberFields = ['no_pages', 'no_chapters'];
+    if (numberFields.indexOf(name) > -1) {
+      value = Number(value);
+    }
     this.setState({ [name] : value }); // handles multiple input fields in the form using this handler
+    console.log('state now ', this.state);
   }
 
   renderForm() {
     return(
-      <FlipMove maintainContainerHeight={true}>
+
         <form>
           <h2>Add new book</h2>
           <input
@@ -91,7 +99,7 @@ export class AddBook extends Component {
             Cancel
           </button>
         </form>
-      </FlipMove>
+
     );
   }
 

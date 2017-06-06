@@ -5,6 +5,7 @@ import '../imports/api/users'; // executes directly
 import '../imports/startup/simple-schema-configuration';
 
 import '../imports/api/notes'; // executes directly
+import '../imports/api/books'; // executes directly
 
 
 Meteor.startup(() => {

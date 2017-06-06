@@ -3,7 +3,6 @@ import { Meteor } from 'meteor/meteor';
 import moment from 'moment';
 import SimpleSchema from 'simpl-schema';
 
-
 export const Books = new Mongo.Collection('books');
 
 if(Meteor.isServer){
@@ -13,9 +12,22 @@ if(Meteor.isServer){
 }
 
 Meteor.methods({
+  'books.add'() {
+    if(!this.userId) {
+      throw new Meteor.Error('not-authorized');
+    }
+    return Books.insert({
+      title: '',
+      body: '',
+      userId: this.userId,
+      updatedAt: moment().valueOf()
+    });
+  },
 
   'books.insert'(book) {
-    if(!this.userId) throw new Meteor.Error('not-authorized');
+    if(!this.userId) {
+      throw new Meteor.Error('not-authorized');
+    }
     validateNewBook(book);
     Books.insert({userId: this.userId, ...book});
   },
@@ -52,9 +64,6 @@ const validateNewBook = (book) => {
     no_pages: {
       type: Number,
       optional: true
-    },
-    userId: {
-      type: String
     }
   }).validate(book);
 }

@@ -5,6 +5,7 @@ import TwoSidedLayout from '../Components/TwoSidedLayout';
 
 import BookList from './BookList';
 import AddBook from './AddBook';
+import FileUploadComponent from '../Components/FileUploadComponent';
 
 const renderSidebar = () => {
   return (
