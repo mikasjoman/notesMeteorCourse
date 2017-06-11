@@ -8,7 +8,7 @@ import { Notes } from '../../api/notes';
 
 import NoteListHeader from './NoteListHeader';
 import NoteListItem from './NoteListItem';
-import NoteListEmptyItem from './NoteListEmptyItem';
+import ListEmptyItem from '../Components/ListEmptyItem';
 
 const renderNotes = (notes) => {
   if(notes.length > 0){
@@ -16,7 +16,7 @@ const renderNotes = (notes) => {
       return  <NoteListItem key={note._id} note={note} />;
     });
   }
-  return <NoteListEmptyItem />;
+  return <ListEmptyItem />;
 }
 
 export const NoteList = (props) => {

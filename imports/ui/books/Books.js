@@ -12,7 +12,7 @@ const renderSidebar = () => {
   return (
     <div className="item-list">
       <AddBook />
-        <BookList />
+      <BookList />
     </div>
   )
 }

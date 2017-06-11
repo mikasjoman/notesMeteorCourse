@@ -3,7 +3,7 @@ import expect from 'expect';
 import { Books } from './books';
 
 if(Meteor.isServer){
-  describe('Books', function(){
+  describe('Books API', function(){
 
     const bookOne = {
       _id: 'book1',

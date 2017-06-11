@@ -14,3 +14,20 @@ export const notes = [
     userId: 'userId1'
   }
 ];
+
+export const books = [
+  {
+    _id: 'book1',
+    title: 'Med 1',
+    no_chapters: 11,
+    no_pages: 1,
+    userId: 'mika22'
+  },
+  {
+    _id: 'book2',
+    title: 'Ped',
+    no_chapters: 11,
+    no_pages: 320,
+    userId: 'mika22'
+  }
+];
