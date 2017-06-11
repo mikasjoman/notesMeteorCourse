@@ -18,7 +18,9 @@ const renderBooks = (books) => {
 export const BookList = (props) => {
   return (
     <div className="item-list">
-      { renderBooks(props.books) }
+      <FlipMove maintainContainerHeight={true}>
+        { renderBooks(props.books) }
+      </FlipMove>
     </div>
   );
 };
@@ -32,7 +34,10 @@ export default createContainer(() => {
   Meteor.subscribe('books');
 
   return {
-    books: Books.find({}).fetch(),
+
+    books: Books.find({}, { sort: { updatedAt: -1 }}).fetch().map( book => {
+      return { ...book, selected: book._id === selectedBookId ? true : false }
+    }),
     selectedBookId
   }
 }, BookList);

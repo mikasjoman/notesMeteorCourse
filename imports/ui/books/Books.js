@@ -12,9 +12,7 @@ const renderSidebar = () => {
   return (
     <div className="item-list">
       <AddBook />
-      <FlipMove maintainContainerHeight={true}>
         <BookList />
-      </FlipMove>
     </div>
   )
 }

@@ -6,30 +6,34 @@ import FlipMove from 'react-flip-move';
 
 import Books from '../../api/books';
 
+const INITIAL_STATE = {
+  showForm: false,
+  title: '',
+  error: ''
+};
+
 export class AddBook extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      showForm: false,
-      title: '',
-      error: ''
-    };
+    this.state = INITIAL_STATE;
   }
 
   saveBook() {
     const { title, no_chapters, no_pages } = this.state;
     let book = { title, no_chapters: parseInt(no_chapters), no_pages: parseInt(no_pages) };
-    console.log('the book is...');
-    console.log(book);
     this.props.meteorCall('books.insert', book, (error, resp) => {
 
       if(error){
         console.log('Could not save the book', error);
         this.setState({ error });
       }else{
-        console.log('Successfully saved the book');
-        this.setState({ showForm: false, error: '' });
+        console.log('Successfully saved the book, with resp ', resp);
+        if(resp){
+          console.log('got selectedBookId', resp)
+          this.props.Session.set('selectedBookId', resp);
+        }
+        this.setState( INITIAL_STATE );
       }
     });
   }
@@ -57,7 +61,6 @@ export class AddBook extends Component {
       value = Number(value);
     }
     this.setState({ [name] : value }); // handles multiple input fields in the form using this handler
-    console.log('state now ', this.state);
   }
 
   renderForm() {

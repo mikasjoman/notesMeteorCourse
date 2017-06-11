@@ -12,24 +12,13 @@ if(Meteor.isServer){
 }
 
 Meteor.methods({
-  'books.add'() {
-    if(!this.userId) {
-      throw new Meteor.Error('not-authorized');
-    }
-    return Books.insert({
-      title: '',
-      body: '',
-      userId: this.userId,
-      updatedAt: moment().valueOf()
-    });
-  },
 
   'books.insert'(book) {
     if(!this.userId) {
       throw new Meteor.Error('not-authorized');
     }
     validateNewBook(book);
-    Books.insert({userId: this.userId, ...book});
+    return Books.insert({userId: this.userId, updatedAt: moment().valueOf(), ...book});
   },
 
   'books.update'(_id, updates){
@@ -39,6 +28,7 @@ Meteor.methods({
       _id
     }, {
       $set: {
+        updatedAt: moment().valueOf(),
         ...updates
       }
     });
