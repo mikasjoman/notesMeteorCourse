@@ -24,7 +24,7 @@ export const onAuthChange = (isAuthenticated, currentPagePrivacy) => {
   const isAuthenticatedPage = currentPagePrivacy === 'auth';
 
   if(isUnauthenticatedPage && isAuthenticated){
-    browserHistory.replace('/notes');
+    browserHistory.replace('/books');
   } else if(isAuthenticatedPage && !isAuthenticated){
     browserHistory.replace('/');
   }

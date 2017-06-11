@@ -36,17 +36,17 @@ export class AddBook extends Component {
 
   renderAddBookBtn() {
       return (
-        <button
-          className="button"
-          onClick={() => {
-            if(!this.state.showForm){
-              this.setState({ showForm: !this.state.showForm });
-            }else{
-              this.saveBook();
-            }
-        }}>
-          { this.state.showForm ? 'Save new book' : 'Add book +'}
-        </button>
+          <button
+            className="button"
+            onClick={() => {
+              if(!this.state.showForm){
+                this.setState({ showForm: !this.state.showForm });
+              }else{
+                this.saveBook();
+              }
+          }}>
+            { this.state.showForm ? 'Save new book' : 'Add book'}
+          </button>
       );
   }
   handleFormChange(event) {

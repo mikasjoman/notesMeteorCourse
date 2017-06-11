@@ -1,4 +1,5 @@
 import React from 'react';
+import FlipMove from 'react-flip-move';
 
 import { createContainer } from 'meteor/react-meteor-data';
 import TwoSidedLayout from '../Components/TwoSidedLayout';
@@ -9,9 +10,11 @@ import FileUploadComponent from '../Components/FileUploadComponent';
 
 const renderSidebar = () => {
   return (
-    <div>
+    <div className="item-list">
       <AddBook />
-      <BookList />
+      <FlipMove maintainContainerHeight={true}>
+        <BookList />
+      </FlipMove>
     </div>
   )
 }

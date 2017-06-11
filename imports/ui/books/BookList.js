@@ -6,37 +6,33 @@ import FlipMove from 'react-flip-move';
 
 import { Books } from '../../api/books';
 
-//import NoteListHeader from './NoteListHeader';
-// import NoteListItem from './NoteListItem';
-// import NoteListEmptyItem from './NoteListEmptyItem';
-//
-// const renderNotes = (notes) => {
-//   if(notes.length > 0){
-//     return notes.map((note) => {
-//       return  <NoteListItem key={note._id} note={note} />;
-//     });
-//   }
-//   return <NoteListEmptyItem />;
-// }
+import BookListItem from './BookListItem';
 
-export const NoteList = (props) => {
+const renderBooks = (books) => {
+  return books.map((book) => {
+    if ( book._id ) return <BookListItem key={book._id} book={book}/>;
+    return 'No books in list'
+  });
+}
+
+export const BookList = (props) => {
   return (
     <div className="item-list">
-      No of books: {props.books.length}
+      { renderBooks(props.books) }
     </div>
   );
 };
 
-NoteList.propTypes = {
-  notes: React.PropTypes.array.isRequired
+BookList.propTypes = {
+  books: React.PropTypes.array.isRequired
 };
 
 export default createContainer(() => {
-  const selectedNoteId = Session.get('selectedNoteId');
+  const selectedBookId = Session.get('selectedBookId');
   Meteor.subscribe('books');
 
   return {
     books: Books.find({}).fetch(),
-    selectedNoteId
+    selectedBookId
   }
-}, NoteList);
+}, BookList);

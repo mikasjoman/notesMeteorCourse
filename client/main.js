@@ -28,9 +28,10 @@ Tracker.autorun(() => {
   document.body.classList.toggle('is-nav-open', isNavOpen);
 });
 
+
 Meteor.startup(() => {
   Session.set('selectedNoteId', undefined);
   Session.set('isNavOpen', false);
-  Session.set('selectedTab', '/notes');
+  Session.set('selectedTab', '/books');
   ReactDOM.render(routes, document.getElementById('app'));
 });
