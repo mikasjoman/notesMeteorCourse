@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Session } from 'meteor/session';
 import { Meteor } from 'meteor/meteor';
-import { Notes } from '../api/notes';
+import { Notes } from '../../api/notes';
 import { browserHistory } from 'react-router';
 
 export class Editor extends Component {

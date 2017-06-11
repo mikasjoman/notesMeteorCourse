@@ -4,7 +4,7 @@ import { Meteor } from 'meteor/meteor';
 import { Session } from 'meteor/session';
 import FlipMove from 'react-flip-move';
 
-import { Notes } from '../api/notes';
+import { Notes } from '../../api/notes';
 
 import NoteListHeader from './NoteListHeader';
 import NoteListItem from './NoteListItem';

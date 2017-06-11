@@ -7,7 +7,7 @@ import Signup from '../ui/Signup';
 import NotFound from '../ui/Components/NotFound';
 import Login from '../ui/Login';
 import Dashboard from '../ui/Dashboard';
-import Notes from '../ui/Notes';
+import Notes from '../ui/notes/Notes';
 import Books from '../ui/books/Books';
 
 
