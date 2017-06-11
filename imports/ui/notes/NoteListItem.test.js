@@ -6,7 +6,7 @@ import moment from 'moment';
 
 import { NoteListItem } from './NoteListItem';
 
-import { notes } from '../fixtures/fixtures';
+import { notes } from '../../fixtures/fixtures';
 
 if(Meteor.isClient) {
   describe('NoteListItem', function(){

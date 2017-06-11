@@ -67,7 +67,7 @@ const validateUpdateBook = (_id, updates) => {
     title: {
       type: String,
       min: 1,
-      optional: true
+      optional: false
     },
     no_chapters: {
       type: Number,

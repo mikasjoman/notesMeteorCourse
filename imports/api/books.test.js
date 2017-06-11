@@ -14,11 +14,9 @@ if(Meteor.isServer){
     };
 
     var bookTwo = {
-      _id: 'book2',
       title: 'Med 2',
       no_chapters: 0,
       no_pages: 22,
-      userId: 'mika33'
     };
 
     beforeEach(function(){
@@ -32,12 +30,7 @@ if(Meteor.isServer){
       });
 
       it('should be able to add a second book', function(){
-        expect(() => {
-          delete bookTwo['_id'];
-          Meteor.server.method_handlers['books.insert']
-              .apply({userId: bookTwo.userId},
-              [bookTwo]);
-        }).toNotThrow();
+        Meteor.server.method_handlers['books.insert'].apply( { userId: 'mika23' }, [bookTwo] );
         expect(Books.find().fetch().length).toEqual(2);
       });
 

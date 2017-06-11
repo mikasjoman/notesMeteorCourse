@@ -5,7 +5,7 @@ import { Meteor } from 'meteor/meteor';
 
 import { NoteList } from './NoteList';
 
-import { notes } from '../fixtures/fixtures';
+import { notes } from '../../fixtures/fixtures';
 
 
 if(Meteor.isClient){
