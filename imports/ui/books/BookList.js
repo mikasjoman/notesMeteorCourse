@@ -7,11 +7,13 @@ import FlipMove from 'react-flip-move';
 import { Books } from '../../api/books';
 
 import BookListItem from './BookListItem';
+import ListEmptyItem from '../Components/ListEmptyItem';
 
 const renderBooks = (books) => {
+  if ( books.length < 1 ) return <ListEmptyItem type="books"/>;
+
   return books.map((book) => {
     if ( book._id ) return <BookListItem key={book._id} book={book}/>;
-    return 'No books in list'
   });
 }
 

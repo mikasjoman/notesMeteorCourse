@@ -23,6 +23,7 @@ if(Meteor.isClient){
 
       expect(wrapper.find('BookListItem').length).toBe(0);
       expect(wrapper.find('ListEmptyItem').length).toBe(1);
+      expect(wrapper.find('ListEmptyItem').text()).toBe('You do not have any books yet');
     });
 
   });

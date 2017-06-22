@@ -16,7 +16,7 @@ const renderNotes = (notes) => {
       return  <NoteListItem key={note._id} note={note} />;
     });
   }
-  return <ListEmptyItem />;
+  return <ListEmptyItem type="notes" />;
 }
 
 export const NoteList = (props) => {

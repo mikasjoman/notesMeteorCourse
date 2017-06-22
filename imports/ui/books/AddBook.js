@@ -25,8 +25,8 @@ export class AddBook extends Component {
     this.props.meteorCall('books.insert', book, (error, resp) => {
 
       if(error){
-        console.log('Could not save the book', error);
-        this.setState({ error });
+        console.log('Could not save the book', error.reason);
+        this.setState({ error: error.reason });
       }else{
         console.log('Successfully saved the book, with resp ', resp);
         if(resp){
@@ -42,6 +42,7 @@ export class AddBook extends Component {
       return (
           <button
             className="button"
+            id="new_book_or_save_btn"
             onClick={() => {
               if(!this.state.showForm){
                 this.setState({ showForm: !this.state.showForm });
@@ -63,14 +64,22 @@ export class AddBook extends Component {
     this.setState({ [name] : value }); // handles multiple input fields in the form using this handler
   }
 
+  renderErrorMsg() {
+    if(this.state.error){
+      return <div>Error saving: {this.state.error}</div>;
+    }
+  }
+
   renderForm() {
     return(
 
         <form>
           <h2>Add new book</h2>
+          { this.renderErrorMsg()}
           <input
             autoFocus
             className="form__input"
+            id="book_title"
             value={this.state.title}
             name="title"
             onChange={this.handleFormChange.bind(this)}
@@ -78,6 +87,7 @@ export class AddBook extends Component {
           />
           <input
             className="form__input"
+            id="no_chapters"
             value={this.state.no_chapters}
             name="no_chapters"
             type="number"
@@ -89,6 +99,7 @@ export class AddBook extends Component {
           />
           <input
             className="form__input"
+            id="no_pages"
             value={this.state.no_pages}
             name="no_pages"
             type="number"
@@ -98,7 +109,7 @@ export class AddBook extends Component {
             onChange={this.handleFormChange.bind(this)}
             placeholder="No of pages"
           />
-          <button className="button button-secondary" onClick={() => this.setState({ showForm: !this.state.showForm })}>
+          <button id="cancelBtn" className="button button-secondary" onClick={() => this.setState(INITIAL_STATE)}>
             Cancel
           </button>
         </form>

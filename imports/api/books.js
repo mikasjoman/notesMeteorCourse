@@ -41,7 +41,7 @@ Meteor.methods({
   }
 });
 
-const validateNewBook = (book) => {
+export const validateNewBook = (book) => {
   new SimpleSchema({
     title: {
       type: String,
