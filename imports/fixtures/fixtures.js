@@ -29,5 +29,12 @@ export const books = [
     no_chapters: 11,
     no_pages: 320,
     userId: 'mika22'
+  },
+  {
+    _id: 'book3',
+    title: 'no chapter book',
+    no_chapters: 0,
+    no_pages: 0,
+    userId: 'mika22'
   }
 ];

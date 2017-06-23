@@ -4,8 +4,10 @@ import FlipMove from 'react-flip-move';
 import { createContainer } from 'meteor/react-meteor-data';
 import TwoSidedLayout from '../Components/TwoSidedLayout';
 
-import BookList from './BookList';
+
 import AddBook from './AddBook';
+import BookList from './BookList';
+import Chapters from './Chapters';
 import FileUploadComponent from '../Components/FileUploadComponent';
 
 const renderSidebar = () => {
@@ -18,7 +20,7 @@ const renderSidebar = () => {
 }
 
 const renderMainContent = () => {
-  return <div>main content</div>
+  return <Chapters />;
 }
 
 export const BooksDashboard = () => {

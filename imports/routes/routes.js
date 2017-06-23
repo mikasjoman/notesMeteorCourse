@@ -15,8 +15,16 @@ const onEnterNotePage = (nextState) => {
   Session.set('selectedNoteId', nextState.params.id);
 }
 
+const onEnterBookPage = (nextState) => {
+  Session.set('selectedBookId', nextState.params.id);
+}
+
 const onLeaveNotePage = () => {
   Session.set('selectedNoteId', undefined);
+}
+
+const onLeaveBookPage = () => {
+  Session.set('selectedBookId', undefined);
 }
 
 export const onAuthChange = (isAuthenticated, currentPagePrivacy) => {
@@ -45,7 +53,10 @@ export const routes = (
       <Route component={Dashboard}>
         <Route path="/" component={Login} privacy="unauth" />
         <Route path="/signup" component={Signup} privacy="unauth" />
+
         <Route path="/books" component={Books} privacy="auth"/>
+        <Route path="/books/:id" component={Books} privacy="auth" onLeave={onLeaveBookPage} onEnter={onEnterBookPage} />
+
         <Route path="/notes" component={Notes} privacy="auth" onLeave={onLeaveNotePage} onEnter={onEnterNotePage} />
         <Route path="/notes/:id" component={Notes} privacy="auth" onLeave={onLeaveNotePage} onEnter={onEnterNotePage} />
       </Route>

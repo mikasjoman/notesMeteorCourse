@@ -22,6 +22,15 @@ Tracker.autorun(()=> {
   };
 });
 
+Tracker.autorun(()=> {
+  // if a book is picked, fetch the noteId and set session
+  const selectedBookId = Session.get('selectedBookId');
+  Session.set('isNavOpen', false);
+  if (selectedBookId) {
+    browserHistory.replace(`/books/${selectedBookId}`);
+  };
+});
+
 Tracker.autorun(() => {
   const isNavOpen = Session.get('isNavOpen');
   //below adds is nav open if it doesnt exist
@@ -31,6 +40,7 @@ Tracker.autorun(() => {
 
 Meteor.startup(() => {
   Session.set('selectedNoteId', undefined);
+  Session.set('selectedBookId', undefined);
   Session.set('isNavOpen', false);
   Session.set('selectedTab', '/books');
   ReactDOM.render(routes, document.getElementById('app'));

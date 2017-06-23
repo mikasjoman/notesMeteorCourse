@@ -13,7 +13,7 @@ if(Meteor.isClient){
     it('should show render BookListItem for each Note', function(){
       const wrapper = mount(<BookList books={books} />);
 
-      expect(wrapper.find('BookListItem').length).toBe(2);
+      expect(wrapper.find('BookListItem').length).toBe(books.length);
       expect(wrapper.find('ListEmptyItem').length).toBe(0);
     });
 
